@@ -1,11 +1,15 @@
 const path = require("path");
-
+const webpack = require("webpack");
+const dotenv = require("dotenv");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+dotenv.config();
 
 module.exports = {
   entry: {
     app: "./src/index.js",
   },
+
   module: {
     rules: [
       {
@@ -29,13 +33,16 @@ module.exports = {
       template: "./src/template.html",
       filename: "index.html",
     }),
+
+    new webpack.DefinePlugin({
+      "process.env.VC_API_KEY": JSON.stringify(process.env.VC_API_KEY),
+      "process.env.GIPHY_API_KEY": JSON.stringify(process.env.GIPHY_API_KEY),
+    }),
   ],
 
   output: {
     filename: "[name].bundle.js",
-
     path: path.resolve(__dirname, "dist"),
-
     clean: true,
   },
 };

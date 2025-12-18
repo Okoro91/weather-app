@@ -24,10 +24,15 @@
   },
   "homepage": "https://github.com/Okoro91/webpack-template#readme",
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "@eslint/js": "^9.39.1",
+    "babel-loader": "^9.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^7.1.2",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
+    "file-loader": "^6.0.0",
     "globals": "^16.5.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.5",
@@ -41,5 +46,11 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.2.3",
+    "lodash.debounce": "^4.0.8",
+    "luxon": "^3.7.2"
   }
 }
