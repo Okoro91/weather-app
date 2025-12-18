@@ -44,90 +44,22 @@ export const debounce = (func, wait) => {
   };
 };
 
-export const throttle = (func, limit) => {
-  let inThrottle;
-  return function () {
-    const args = arguments;
-    const context = this;
-    if (!inThrottle) {
-      func.apply(context, args);
-      inThrottle = true;
-      setTimeout(() => (inThrottle = false), limit);
-    }
-  };
-};
+// export const convertTemperature = (temp, from, to) => {
+//   if (from === to) return temp;
 
-export const getSeverityColor = (severity) => {
-  const colors = {
-    minor: "#fbbf24",
-    moderate: "#f59e0b",
-    severe: "#dc2626",
-    extreme: "#7c2d12",
-  };
-  return colors[severity.toLowerCase()] || "#6b7280";
-};
+//   if (from === "celsius" && to === "fahrenheit") {
+//     return (temp * 9) / 5 + 32;
+//   } else if (from === "fahrenheit" && to === "celsius") {
+//     return ((temp - 32) * 5) / 9;
+//   }
 
-export const getUVIndexInfo = (uvIndex) => {
-  if (uvIndex <= 2) return { color: "#10b981", description: "Low" };
-  if (uvIndex <= 5) return { color: "#f59e0b", description: "Moderate" };
-  if (uvIndex <= 7) return { color: "#f97316", description: "High" };
-  if (uvIndex <= 10) return { color: "#ef4444", description: "Very High" };
-  return { color: "#7c2d12", description: "Extreme" };
-};
+//   return temp;
+// };
 
-export const getAQIInfo = (aqi) => {
-  if (aqi <= 50) return { color: "#10b981", description: "Good", emoji: "😊" };
-  if (aqi <= 100)
-    return { color: "#fbbf24", description: "Moderate", emoji: "😐" };
-  if (aqi <= 150)
-    return {
-      color: "#f59e0b",
-      description: "Unhealthy for Sensitive",
-      emoji: "😷",
-    };
-  if (aqi <= 200)
-    return { color: "#ef4444", description: "Unhealthy", emoji: "🤢" };
-  if (aqi <= 300)
-    return { color: "#7c2d12", description: "Very Unhealthy", emoji: "⚠️" };
-  return { color: "#581c87", description: "Hazardous", emoji: "☠️" };
-};
-
-export const generateId = () => {
-  return Date.now().toString(36) + Math.random().toString(36).substr(2);
-};
-
-export const validateEmail = (email) => {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-};
-
-export const validateLocation = (location) => {
-  return location && location.trim().length > 0;
-};
-
-export const convertTemperature = (temp, from, to) => {
-  if (from === to) return temp;
-
-  if (from === "celsius" && to === "fahrenheit") {
-    return (temp * 9) / 5 + 32;
-  } else if (from === "fahrenheit" && to === "celsius") {
-    return ((temp - 32) * 5) / 9;
-  }
-
-  return temp;
-};
-
-export const getWeatherEmoji = (condition) => {
-  const emojis = {
-    clear: "☀️",
-    "partly-cloudy": "⛅",
-    cloudy: "☁️",
-    rain: "🌧️",
-    snow: "❄️",
-    thunderstorm: "⛈️",
-    fog: "🌫️",
-    wind: "💨",
-  };
-
-  return emojis[condition.toLowerCase()] || "🌈";
-};
+// export const getUVIndexInfo = (uvIndex) => {
+//   if (uvIndex <= 2) return { color: "#10b981", description: "Low" };
+//   if (uvIndex <= 5) return { color: "#f59e0b", description: "Moderate" };
+//   if (uvIndex <= 7) return { color: "#f97316", description: "High" };
+//   if (uvIndex <= 10) return { color: "#ef4444", description: "Very High" };
+//   return { color: "#7c2d12", description: "Extreme" };
+// };
