@@ -1,3 +1,6 @@
+import moon from "../assets/unit/night.svg";
+import sun from "../assets/unit/day.svg";
+
 import { getWeatherIcon } from "./api.js";
 import {
   formatTemperature,
@@ -86,7 +89,11 @@ export const updateWeatherDisplay = (weatherData, backgroundUrl) => {
   if (!weatherData) return;
   updateBackground(backgroundUrl, weatherData.current.condition);
   updateCurrentWeather(weatherData);
-  updateHourlyForecast(weatherData.hourly);
+  updateHourlyForecast(
+    weatherData.hourly,
+    weatherData.current.sunrise,
+    weatherData.current.sunset
+  );
   updateDailyForecast(weatherData.forecast);
   if (weatherData.alerts?.length > 0) showAlerts(weatherData.alerts);
   updateLastUpdated(weatherData.lastUpdated);
@@ -100,10 +107,6 @@ const updateCurrentWeather = async (data) => {
   elements.currentLocation.textContent = location.name;
   elements.currentTemp.innerHTML = formatTemperature(current.temp, unit);
   elements.currentCondition.textContent = current.condition;
-
-  const icon = await getWeatherIcon(current.icon, isDay);
-  elements.currentIcon.innerHTML = typeof icon === "string" ? icon : "";
-  if (typeof icon !== "string" && icon) elements.currentIcon.appendChild(icon);
 
   elements.feelsLike.textContent = formatTemperature(current.feelsLike, unit);
   elements.humidity.textContent = `${current.humidity}%`;
@@ -171,21 +174,33 @@ const updateBackground = (url, condition) => {
   }
 };
 
-const updateHourlyForecast = (hourlyData) => {
+export const updateHourlyForecast = async (hourlyData, sunrise, sunset) => {
   elements.hourlyForecast.innerHTML = "";
-  hourlyData.slice(0, 24).forEach((hour) => {
+
+  for (const hour of hourlyData.slice(0, 24)) {
     const hourEl = document.createElement("div");
     hourEl.className = "hour-item";
 
+    const isDay = hour.time >= sunrise && hour.time <= sunset;
+
+    const iconPath = await getWeatherIcon(hour.icon, isDay);
+    console.log("Hour Icon Path:", hour.icon);
+
     const time = format(new Date(`1970-01-01T${hour.time}`), "ha");
+
     hourEl.innerHTML = `
       <div class="hour-time">${time}</div>
-      <div class="hour-icon">${hour.icon}</div>
+      <div class="hour-icon-wrapper">
+        <img src="${iconPath}" alt="${hour.icon}" class="hourly-icon-img" />
+      </div>
       <div class="hour-temp">${Math.round(hour.temp)}°</div>
-      <div class="hour-precip">${hour.precipitation}%</div>
+      <div class="hour-precip">
+        ${hour.precipitation > 0 ? `${hour.precipitation}%` : ""}
+      </div>
     `;
+
     elements.hourlyForecast.appendChild(hourEl);
-  });
+  }
 };
 
 const updateDailyForecast = (dailyData) => {
@@ -222,7 +237,9 @@ const updateUnitToggle = (unit) => {
 const toggleTheme = () => {
   const isDark = document.body.classList.toggle("dark-theme");
   localStorage.setItem("theme", isDark ? "dark" : "light");
-  elements.themeToggle.textContent = isDark ? "☀️" : "🌙";
+  elements.themeToggle.innerHTML = isDark
+    ? `<img src="${moon}" alt="Moon Icon" class="small-icon" />`
+    : `<img src="${sun}" alt="Sun Icon" class="small-icon" />`;
 };
 
 const showSearchSuggestions = async (query) => {

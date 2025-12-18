@@ -1,5 +1,10 @@
 import sun from "../assets/icons/day/clear.svg";
-console.log(sun);
+import moon from "../assets/unit/night.svg";
+import compass from "../assets/unit/compass.svg";
+import wind from "../assets/unit/wind.svg";
+import moonpahse from "../assets/unit/moon-phase.svg";
+import setting from "../assets/unit/setting.svg";
+import refresh from "../assets/unit/star.svg";
 
 const initializeApp = (state) => {
   const content = document.getElementById("content");
@@ -20,11 +25,11 @@ const initializeApp = (state) => {
           
           <div class="header-right">
             <button id="theme-toggle" class="btn-icon" title="Toggle theme">
-              🌙
+            <img src="${moon}" alt="Moon Icon" class="small-icon" />
             </button>
             <div class="header-controls">
               <button id="location-btn" class="btn-icon" title="Use my location">
-                📍
+                <img src="${compass}" alt="Compass Icon" class="small-icon" />
               </button>
               <button id="unit-toggle" class="btn-unit" data-unit="${state.unit}">
                 ${state.unit === "celsius" ? "°F" : "°C"}
@@ -155,17 +160,20 @@ const initializeApp = (state) => {
   
 
     <div class="info-card">
-      <h4>💨 Wind Details</h4>
+    <img src="${wind}" alt="Wind Icon" class="small-icon" />
+      <h4>Wind Details</h4>
       <p class="info-value" id="wind-direction">${state.currentWeather?.windDirection || "--"}</p>
       <p class="info-desc">Direction</p>
     </div>
     <div class="info-card">
-      <h4>🌅 Day Length</h4>
+    <img src="${sun}" alt="Moon Phase Icon" class="small-icon" />
+      <h4>Day Length</h4>
       <p class="info-value" id="day-length">--</p>
       <p class="info-desc">Sunrise to Sunset</p>
     </div>
     <div class="info-card">
-      <h4>📈 Moon Phase</h4>
+    <img src="${moonpahse}" alt="Moon Phase Icon" class="small-icon" />
+      <h4>Moon Phase</h4>
       <p class="info-value" id="moon-phase"></p>
     </div>
   </div>
@@ -185,10 +193,12 @@ const initializeApp = (state) => {
             </div>
             <div class="footer-right">
               <button class="btn-text" id="refresh-btn">
-                🔄 Refresh
+                <img src="${refresh}" alt="Refresh Icon" class="smaller-icon" />
+                 Refresh
               </button>
               <button class="btn-text" id="settings-btn">
-                ⚙️ Settings
+                <img src="${setting}" alt="Settings Icon" class="smaller-icon" />
+                 Settings
               </button>
             </div>
           </div>

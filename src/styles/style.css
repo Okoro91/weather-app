@@ -8,7 +8,7 @@
   --primary-color: #667eea;
   --secondary-color: #764ba2;
   --accent-color: #4fd1c7;
-  --background-color: #f7fafc;
+  --background-color: #dcedf9;
   --surface-color: #ffffff;
   --text-primary: #2d3748;
   --text-secondary: #718096;
@@ -318,6 +318,11 @@ body {
   color: rgba(255, 255, 255, 0.8);
 }
 
+.small-icon {
+  width: 60px;
+  height: 60px;
+}
+
 .weather-icon {
   width: 30px;
 }
@@ -410,6 +415,12 @@ img.icon-img {
   background: var(--background-color);
   border-radius: var(--radius-lg);
   min-width: 80px;
+}
+
+.hourly-icon-img {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
 }
 
 .hour-time {
@@ -577,6 +588,11 @@ img.icon-img {
 .alert-body {
   font-size: var(--text-sm);
   line-height: 1.5;
+}
+
+.smaller-icon {
+  width: 20px;
+  height: 20px;
 }
 
 .app-footer {

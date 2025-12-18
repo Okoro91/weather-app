@@ -147,6 +147,7 @@ export const fetchGif = async (weatherCondition) => {
     thunderstorm: "thunderstorm lightning",
     fog: "fog mist",
     wind: "windy weather",
+    drizzle: "light rain",
   };
 
   const term = searchTerms[weatherCondition?.toLowerCase()] || weatherCondition;
@@ -196,8 +197,8 @@ const icons = require.context("../assets/icons", true, /\.svg$/);
 
 export function getWeatherIcon(iconName, isDay = true) {
   try {
-    // const timeOfDay = isDay ? "day" : "night";
-    const timeOfDay = "day" || "night";
+    const timeOfDay = isDay ? "day" : "night";
+    // const timeOfDay = "day" || "night";
 
     const iconMap = {
       "clear-day": "clear.svg",
@@ -210,6 +211,12 @@ export function getWeatherIcon(iconName, isDay = true) {
       fog: "fog.svg",
       wind: "wind.svg",
       thunderstorm: "thunderstorm.svg",
+      drizzle: "drizzle.svg",
+      dust: "dust.svg",
+      haze: "haze.svg",
+      smoke: "smoke.svg",
+      sleet: "sleet.svg",
+      overcast: "overcast.svg",
     };
 
     console.log("Loading icon:", iconName, "as", timeOfDay);
