@@ -108,7 +108,7 @@ body {
 }
 
 .app-header {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(153, 7, 189, 0.7);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: var(--space-lg) var(--space-xl);
@@ -126,16 +126,6 @@ body {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-}
-
-.weather-icon {
-  /* font-size: var(--text-2xl); */
-  width: 10px;
-}
-
-img.icon-img {
-  width: 40px;
-  height: 40px;
 }
 
 .app-subtitle {
@@ -207,7 +197,7 @@ img.icon-img {
 .search-input-wrapper {
   display: flex;
   gap: var(--space-sm);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(153, 7, 189, 0.7);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-lg);
@@ -258,7 +248,7 @@ img.icon-img {
 }
 
 .current-weather {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(153, 7, 189, 0.7);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-xl);
@@ -326,6 +316,20 @@ img.icon-img {
 .feels-like {
   font-size: var(--text-base);
   color: rgba(255, 255, 255, 0.8);
+}
+
+.weather-icon {
+  width: 30px;
+}
+
+img.icon-img {
+  width: 70px;
+  height: 40px;
+}
+.weather-icon-main {
+  width: 200px;
+  height: 200px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
 }
 
 .weather-icon-large {
@@ -578,7 +582,7 @@ img.icon-img {
 .app-footer {
   margin-top: auto;
   padding: var(--space-lg) var(--space-xl);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(153, 7, 189, 0.7);
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -724,12 +728,6 @@ img.icon-img {
 .btn-secondary:hover {
   opacity: 0.9;
   transform: translateY(-1px);
-}
-
-.weather-icon-main {
-  width: 100px;
-  height: 100px;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
 }
 
 @keyframes spin {
