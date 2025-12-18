@@ -196,7 +196,8 @@ const icons = require.context("../assets/icons", true, /\.svg$/);
 
 export function getWeatherIcon(iconName, isDay = true) {
   try {
-    const timeOfDay = isDay ? "day" : "night";
+    // const timeOfDay = isDay ? "day" : "night";
+    const timeOfDay = "day" || "night";
 
     const iconMap = {
       "clear-day": "clear.svg",

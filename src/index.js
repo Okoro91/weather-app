@@ -110,14 +110,25 @@ const toggleLoading = (show) => {
   show ? loader.classList.remove("hidden") : loader.classList.add("hidden");
 };
 
-const showError = (message) => {
+function showError(message) {
   const errorModal = document.getElementById("error-modal");
-  if (errorModal) {
-    document.getElementById("error-message").textContent = message;
-    errorModal.classList.remove("hidden");
-  } else {
-    alert(`Error: ${message}`);
-  }
-};
+  const errorMessage = document.getElementById("error-message");
+  const retryBtn = document.getElementById("retry-btn");
+
+  errorMessage.textContent = message;
+  errorModal.classList.remove("hidden");
+
+  retryBtn.onclick = () => {
+    errorModal.classList.add("hidden");
+    getGeolocation();
+    // if (state.location) {
+    //   fetchWeatherData(state.location, state.unit);
+    // }
+  };
+
+  document.querySelector(".close-modal").onclick = () => {
+    errorModal.classList.add("hidden");
+  };
+}
 
 document.addEventListener("DOMContentLoaded", init);
