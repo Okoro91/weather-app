@@ -867,3 +867,8 @@ img.icon-img {
 .slide-up {
   animation: slideIn var(--transition-base);
 }
+
+.loading-icon {
+  width: 550px;
+  height: 550px;
+}
